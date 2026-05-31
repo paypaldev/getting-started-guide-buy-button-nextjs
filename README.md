@@ -17,7 +17,7 @@ Open the code in the web IDE now using GitHub Codespaces... [![Open in GitHub Co
 
 You can use GitHub Codespace 1 click deploy, but if you prefer to run this locally follow these steps:
 
-1. Clone this repo with `git clone git@github.com/paypaldev/getting-started-guide-buy-button-nextjs`
+1. Clone this repo with `git clone git@github.com:paypaldev/getting-started-guide-buy-button-nextjs.git`
 2. Navigate into the new project `cd getting-started-guide-buy-button-nextjs`
 3. Install dependencies `npm install`
 4. Add your PayPal client id and client secret to your projects environment variables in `.env.local`
