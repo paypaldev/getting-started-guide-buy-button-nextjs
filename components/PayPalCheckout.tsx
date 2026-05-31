@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   PayPalProvider,
   PayPalOneTimePaymentButton,
@@ -9,6 +10,19 @@ import { createOrder, captureOrder } from "@/app/actions";
 
 // Wrap in PayPalProvider — this loads and initialises the SDK script
 export default function PayPalCheckout() {
+  const [orderComplete, setOrderComplete] = useState(false);
+
+  if (orderComplete) {
+    return (
+      <div
+        role="status"
+        className="rounded-lg border border-green-500 bg-green-50 px-5 py-4 font-medium text-green-700"
+      >
+        ✓ Payment successful! Your order has been confirmed.
+      </div>
+    );
+  }
+
   return (
     <PayPalProvider
       clientId={process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!}
@@ -27,7 +41,7 @@ export default function PayPalCheckout() {
         }}
         onApprove={async ({ orderId }: OnApproveDataOneTimePayments) => {
           await captureOrder(orderId);
-          console.log("Payment captured!");
+          setOrderComplete(true);
         }}
         presentationMode="auto"
       />
